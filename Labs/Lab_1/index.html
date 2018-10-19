@@ -1,0 +1,446 @@
+<!-- NOTE: Always add the doctype declation to your HTML docucuments so that browser
+know to expect a html document, you cannot rely on the document have a html, htm or an
+extension at all!
+-->
+
+<!DOCTYPE HTML>
+<!--
+This is the start of our web page.
+
+Here we define our <html> and </html> tags, and between that we will
+place everything else, including our 'head' and our 'body' along with
+some bootstrapping 'javascript code' or some css.
+
+eg:
+we start out with
+
+<html>
+	...
+	...
+</html>
+
+and lay that out.
+
+and progress to adding the HEAD and BODY sections
+
+<html>
+	<head>
+	..define some stuff in head...
+	</head>
+
+	<body>
+	 ...define some stuff in body
+	</body>
+	...other stuff maybe
+</html>
+
+and once that is done  from there to
+
+<html>
+	<head>
+	..define some stuff in head...
+	</head>
+
+	<body>
+	...define some stuff in body
+	  [script]
+	  ...write most of our javascript code...
+	  [/script]
+	</body>
+	...other stuff maybe
+</html>
+
+
+And at that point we have a clear defination for
+
+	HTML Page
+			Title
+			Body
+			..Code
+
+To keep things nice and clean, the web page will be broken up into a number of parts
+
+	HTML Files will 'mostly' contain HTML and some javascript
+	JS files will contain all our 'functions' that do stuff.
+	CSS files will contain all the data that makes our site 'look' the way it does.
+-->
+
+
+
+
+<!-- IT BEGINS!!!! -->
+<html>
+
+<!-- The first thing we will do inside of our HTML page is to define the HEAD
+of the web page. It has some useful stuff we can set so that's what we're going
+to do.
+-->
+	<head>
+		<!--
+		Our Page Title (that appears in the titlebar of your browser), search results
+		and else where. You need to set this.
+
+		NOTE: The <title> element defines the title of the document, and is required in all
+		HTML/XHTML documents.
+
+		See: https://www.w3schools.com/html/html_head.asp if you need more info
+		-->
+		<title>Cornerstone Student Network</title>
+
+
+		<!--
+		Another useful, but optional element is 'description', which lets us add some additional
+		information to our web page that tends to turn up in search engines, web crawlers
+		and other users who might pull your web page will apprciate it if you use it
+
+		<description>
+				The Cornerstone Student Network is a HTML5,CSS3 and JS website built by cornerstone Students
+		</description>
+		-->
+
+		<!--
+		Speaking of search engines! - lets provide some keywords so search engines
+		can direct users to our site more easily, an important skill in SEO & Marketing!
+		-->
+		<meta name="keywords" content="HTML, CSS, JS, JavaScript, Cornerstone, Students, Network, Showpiece">
+
+		<!-- Lets define the 'Author' of the page, because its good to get recognician! -->
+		<meta name="author" content="Ivan Malone">
+
+
+		<!--The Character set we are going to use-->
+		<meta charset="utf-8" />
+		<!--If you need a refresher on character sets: https://www.w3schools.com/html/html_charset.asp -->
+
+		<!--
+		NOTE: How was it I knew to use things like 'keywords', 'author', 'description' and so on?
+
+		Some things are required, some are optional. You can explore more about HTML Head tags here
+		https://www.w3schools.com/tags/tag_head.asp
+		-->
+
+
+		<!-- lETS CONTINUE! We got a website to build!
+
+		HTML5 introduced a method to let web designers take control over the 'viewport', through the <meta> tag.
+		The viewport is the 'users' "visible" are of the web page. The viewport properties vary with device, window resize
+		and will be smaller on mobiles than on computer screens.
+
+		NOTE: You should include the following <meta> viewport element in all your web pages:
+
+			 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	  A <meta> viewport element gives the browser instructions on how to control the page's dimensions and scaling
+		but also provides valuable information for your code too.
+
+		NOTE: To find out more about the 'viewport' check out https://www.w3schools.com/css/css_rwd_viewport.asp
+
+		So, for our needs, we set a 'viewport' that is the width of device, scaled to 1, and not user scalable
+	  -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+		<!-- Now, lets deal with the CSS parts
+
+		Since we are going to create a beautiful looking site and we want to keep our code tidy, we will keep the vast majority
+		of all our CSS styling stuff in a 'main.css' file.
+
+		NOTE: Need a refresher on CSS? Check out https://www.w3schools.com/css/css_intro.asp
+
+		So, now we set what our main stylesheet is.
+
+		I have provided a complex stylesheet that contains both CSS and JS parts.
+		-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<!-- NOTE: Need some info on meta tags? see https://www.w3schools.com/tags/tag_meta.asp -->
+
+
+		<!--NOTE: Since not all browsers can run the javascript in the CSS I provided, we must provide an alternative one!
+
+		There are many situations when a user 'may' or 'may not' have javascript enabled in their browser, since this is a common
+		thing to happen - we handle this situation. We do this by using a common 3rd party CSS called noscript.css which
+		takes care of some stuff for us. In the case where no javascript is detected, we simply 'replace' our stylesheet that we
+		just set in the previous statement, with the no one we set during our <noscript> tag as you will see.
+
+		In order to use the noscript.css I use the 'noscript' tag  to define an alternate content for users that have disabled
+		scripts in their browser, and using link rel and href
+
+		NOTE: What is noscript? - its just a handy script I provide for us to use for this case, at this moment we just
+		include it but dont need to know how it works, it just provides a nice clean css when javascript isn't enabled in
+		a browser, you will 'often' use 3rd party libraries like this later in career.
+	  -->
+
+		<noscript>
+			<!--Ok, in the case the browser has no javascript, it will look at this code, otherwise it will do nothing (most cases)
+
+			the first thing we do is set up a relationship between the current document (our previous CSS which DOES use javascript, our main.css stylesheet)
+		  and the noscript.css which provides basic css that contains no JavaScript.
+
+					link rel="stylesheet"
+					See: https://www.w3schools.com/tags/att_link_rel.asp for more information on that.
+
+			this says set up a relationship with 'stylesheet' (remember we said in an earlier link rel that main.css was stylesheet), since this one useSectionTransitions
+			javascript we need to 'replace it', before going any further with the web page loading. We use a hRef to reference it.
+
+					href="assets/css/noscript.css" />
+					See: https://www.w3schools.com/tags/att_a_href.asp
+			 -->
+
+			 <link rel="stylesheet"  href="assets/css/noscript.css" />
+		<!-- We are finiahed handling code that should execute when no Javascript is detected -->
+		</noscript>
+		<!--If you want to learn about the NOSCRIPT tag, check out here: https://www.w3schools.com/tags/tag_noscript.asp -->
+
+		<!--
+		Finished our Head finally!
+
+		NOTE: Summary
+		What have we learned here?
+			* Its good to lay out your code nice first
+			* We must *include* a title element on all html pages
+			* You were introduced to the description element
+			* We added some SEO friendly 'meta tags' to our page
+			* We defined a character set we want to use 'utf8'
+			* We setup a viewport which represents the 'users' view
+			* We added a CSS file to take care of our styling
+			* We added a 'handler' for the case where javascript is not supported
+		-->
+	</head>
+
+
+<!--
+Lets now start with the body
+-->
+	<body class="is-preload">
+	<!--
+	NOTE: In our main.css we defined a class for body called is-preload
+	Search for 'body.is-preload' in main.css, this defines how our 'body'
+	will look (and other elements too)
+	-->
+
+		<!-- create our Header and give it the id 'header'
+		see: https://www.w3schools.com/tags/tag_header.asp-->
+			<header id="header">
+
+				<!--We want to show our logo so lets do it with a h1
+			  See: https://www.w3schools.com/tags/tag_hn.asp -->
+				<h1>Cornerstone Student Network</h1>
+
+				<!--Now we start the section for our 'Main Menu' or 'nav' menu.
+				See: https://www.w3schools.com/tags/tag_nav.asp -->
+				<nav>
+					<ul><!-- Inside 'nav' we create an 'unordered HTML list'
+				 			see: https://www.w3schools.com/tags/tag_ul.asp -->
+
+						<!--Each ITEM in our list will be a link 'href' to a #section on our page-->
+						<li> <!-- our list item -->
+							<a href="#intro">Intro</a> <!-- our link to the #intro section later in the code (down below) -->
+						</li><!-- close this list item -->
+
+						<li> <!-- begin another list item -->
+							<a href="#about">About Us</a> <!-- point to another #section this time -->
+						</li> <!-- close it -->
+
+						<li> <!-- and so on -->
+							<a href="#one">The Students</a>
+						</li>
+					  <!-- and we just do the others on one line for fun, makes no difference -->
+						<li><a href="#two">The Faculity</a></li>
+						<li><a href="#work">Student Guide</a></li>
+						<li><a href="#contact">Gallery</a></li>
+						<li><a href="#contact">Blog</a></li>
+						<li><a href="#contact">Social</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul> <!-- finished our unordered list-->
+				</nav> <!-- this is the end of our navigation menu -->
+			</header> <!-- and we are finished with our header now -->
+
+
+		<!--
+		NOTE: Here, we have various 'section' definations and each one has an 'id' associated with it.
+		You will notice that the 'id' used in the following 'section definations' 'match' the href="#section" definations we used in the nav menu above.
+		When an 'item' in the nav menu is clicked, the page with automatically 'scoll' down the page to the relevent 'section' here.
+
+		NOTE: The look, feel and behavior of the sections are governed by the code on main.css file. Where you a see a line like
+
+				<section id="intro" class="main style1 dark fullscreen">
+
+		it Means
+			create the section called 'intro' and style it from 'main using style1, dark and fullscreen'
+
+			main, sty1, dark and fullscreen all exist in the main.css, search for ".main {" (around line 2000+)
+
+		Each section will have a different styling and behaviour. Only 1 section is commented as the rest follow the same pattern.
+		-->
+
+		<!-- Intro -->
+		<!-- Create our Section to wrap around the content -->
+			<section id="intro" class="main style1 dark fullscreen">
+
+				<!-- Create a div of class 'content' -->
+				<div class="content">
+
+					<!-- Define a header for this div and give a nice looking title-->
+					<header>
+						<h2>Welcome to the <b>CICCIC</b> Student Network</h2>
+					</header>
+
+					<!-- Lets display the actual text we want to show the user -->
+					<p>Fun Fact! - <strong><i>Did you know</i></strong> that the students will build this website from stratch? It will be
+					 a responsive template designed and programmed by <a href="https://ciccc.ca/">Cornerstone Students</a><br />
+					</p>
+
+					<!-- now lets take care of the footer part of the div -->
+					<footer>
+						<!-- here is a link
+						NOTE: href should point #section to the section immediatlly below this one, I want the effect of moving down the page each time
+							the link/button is clicked, it gives a nice transisition down the page is all -->
+						<a href="#about" class="button style2 down">More</a>
+					</footer>
+
+					<!-- and we are finished our div -->
+				</div>
+			<!-- finished another section -->
+			</section>
+
+
+		<!-- About -->
+		<!-- Create our Section to wrap around the content -->
+			<section id="about" class="main style1 dark fullscreen">
+				<!-- Create a div of class 'content', this time we use different styling than the previous section, just for fun -->
+				<div class="content box style2">
+
+					<!-- Create the header portion of our div -->
+					<header>
+						<h2>Our Programs</h2>
+					</header>
+
+					<!-- Create the content or body portion of our div -->
+					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
+					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+
+					<!-- and this time, I dont want a footer so I dont draw one, I just end the div -->
+				</div>
+				<!-- I do make another button link to the next #section though -->
+				<a href="#two" class="button style2 down anchored">Next</a>
+
+		  <!-- finished another section -->
+			</section>
+
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Our Programs</h2>
+					</header>
+					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
+					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Who I Am</h2>
+					</header>
+					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
+					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+				<div class="content">
+					<header>
+						<h2>My Work</h2>
+						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+						Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis
+						arcu, id varius justo euismod in. Curabitur egestas consectetur magna vitae.</p>
+					</header>
+
+					<!-- Gallery  -->
+						<div class="gallery">
+							<article class="from-left">
+								<a href="images/fulls/01.jpg" class="image fit"><img src="images/thumbs/01.jpg" title="The Anonymous Red" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="images/fulls/02.jpg" class="image fit"><img src="images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="images/fulls/03.jpg" class="image fit"><img src="images/thumbs/03.jpg" title="Air Lounge" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="images/fulls/04.jpg" class="image fit"><img src="images/thumbs/04.jpg" title="Carry on" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="images/fulls/05.jpg" class="image fit"><img src="images/thumbs/05.jpg" title="The sparkling shell" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="images/fulls/06.jpg" class="image fit"><img src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a>
+							</article>
+						</div>
+
+				</div>
+			</section>
+
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
+				<div class="content">
+					<header>
+						<h2>Say Hello.</h2>
+						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.</p>
+					</header>
+					<div class="box">
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
+								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
+								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
+							</div>
+							<ul class="actions special">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Cornerstone Student</li><li>Design: <a href="https://www.google.com">Cornerstone</a></li>
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

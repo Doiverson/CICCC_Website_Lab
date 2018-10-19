@@ -1,0 +1,46 @@
+
+html,
+body {
+    height: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.login_title {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+
+form {
+    background-color: #b9babb;
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    position:  absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display:  flex;
+    flex-direction:  column;
+    justify-content:  center;
+}
+
+label,
+input {
+    display: block;
+    margin: 20px auto;
+}
+
+input {
+    margin-top: 0;
+}
